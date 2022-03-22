@@ -2,15 +2,15 @@ elements = list(map(int, input("Введите числа через пробе�
 element = int(input("Введите число, которое хотите найти:\n"))
 
 def bubble(array):
-    for i in range(element-1):
-        for j in range(element-i-1):
+    N = len(elements)
+    for i in range(N-1):
+        for j in range(N-i-1):
             if array[j] > array[j+1]:
                 array[j], array[j + 1] = array[j + 1], array[j]
 
 def binary_search(array, element, left, right):
     if left > right:
         return False
-
     middle = (right + left) // 2
     if elements[middle] == element:
         return middle
@@ -18,6 +18,8 @@ def binary_search(array, element, left, right):
         return binary_search(elements, element, left, middle - 1)
     else:
         return binary_search(elements, element, middle + 1, right)
+
+bubble(elements)
 
 print("Отсортированный список:\n", elements)
 print("Индекс числа:", binary_search(elements, element, 0, len(elements)))
