@@ -1,5 +1,8 @@
-elements = list(map(int, input("Введите числа через пробел:\n").split()))
-element = int(input("Введите число, которое хотите найти:\n"))
+try:
+    elements = list(map(int, input("Введите числа через пробел:\n").split()))
+    element = int(input("Введите число, которое хотите найти:\n"))
+except ValueError:
+    print("Введено неверное значение. Можно вводить только цифры")
 
 def bubble(array):
     N = len(elements)
@@ -18,8 +21,9 @@ def binary_search(array, element, left, right):
         return binary_search(elements, element, left, middle - 1)
     else:
         return binary_search(elements, element, middle + 1, right)
-
-bubble(elements)
-
-print("Отсортированный список:\n", elements)
-print("Индекс числа:", binary_search(elements, element, 0, len(elements)))
+try:
+    bubble(elements)
+    print("Отсортированный список:\n", elements)
+    print("Индекс числа:", binary_search(elements, element, 0, len(elements)))
+except NameError:
+    print()
